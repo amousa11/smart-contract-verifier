@@ -10,19 +10,24 @@ router.get('/', function(req, res, next) {
     		// An error was encountered, display and quit
     	}
     	var output = solcSnapshot.compile("contract t { function g() {} }", 1)
-
-        for (var key in obj) {
-            if (obj.hasOwnProperty(key)) {
-                if ("object" == typeof(obj[key])) {
-                    getNames(obj[key], name);
-                } else if (key == name) {
-                    result.push(obj[key]);
+        var result = [];
+        function getNames(obj, name) {
+            for (var key in obj) {
+                if (obj.hasOwnProperty(key)) {
+                    if ("object" == typeof(obj[key])) {
+                        getNames(obj[key], name);
+                    } else if (key == name) {
+                        result.push(obj[key]);
+                    }
                 }
             }
         }
-        res.send(output);
+        getNames(output, "runtimeBytecode");
+        res.send(result);
     })
 
 });
+
+
 
 module.exports = router;
