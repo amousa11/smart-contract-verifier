@@ -3,14 +3,11 @@ import { Button } from '@blueprintjs/core';
 import Editor from './components/Editor'
 import '@blueprintjs/core/dist/blueprint.css';
 import './App.css';
-var Web3 = require('web3');
 
 class App extends Component {
 
   constructor(props) {
     super(props);
-    const web3 = new Web3(window.web3.currentProvider);
-    this.state = { web3: web3 }
   }
 
   componentDidMount() {

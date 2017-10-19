@@ -3,6 +3,7 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var cors = require('cors')
 var bodyParser = require('body-parser');
 
 var MongoClient = require('mongodb').MongoClient;
@@ -21,6 +22,7 @@ server.set('view engine', 'jade');
 // uncomment after placing your favicon in /public
 //server.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 server.use(logger('dev'));
+server.use(cors());
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: false }));
 server.use(cookieParser());
