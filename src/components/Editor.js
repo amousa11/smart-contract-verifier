@@ -6,18 +6,20 @@ import AceEditor from 'react-ace';
 import 'brace/mode/javascript';
 import 'brace/theme/github';
 import '@blueprintjs/core/dist/blueprint.css';
-var Web3 = require('web3');
 
 class Editor extends Component {
 
     constructor(props) {
         super(props);
-        const web3 = new Web3(window.web3.currentProvider);
-        this.state = { web3: web3, text: "" }
+        this.state = { text: "" }
     }
 
     onChange = (text) => {
         this.setState({text: text});
+    }
+
+    compile = () => {
+        
     }
 
     render() {
@@ -37,7 +39,14 @@ class Editor extends Component {
                         </label>
                     </div>
 
-                    <div className="col-sm-4 pt-align-right"><Button className="pt-large pt-minimal pt-intent-primary pt-icon-add">Verify and Publish</Button></div>
+                    <div className="col-sm-4">
+                        <label className="pt-label">
+                            <h4></h4>
+                            <Button onClick={this.compile} className="pt-large pt-minimal pt-intent-primary pt-icon-add">Verify and Publish</Button>
+                        </label>
+                    </div>
+
+                    <div className="col-sm-4 pt-align-right"></div>
                 </div>
 
                 <div className="row">
