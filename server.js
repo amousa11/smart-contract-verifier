@@ -11,7 +11,6 @@ var ObjectId = require('mongodb').ObjectID;
 var url = 'mongodb://localhost:27017/test';
 
 var index = require('./routes/index');
-var users = require('./routes/users');
 
 var server = express();
 
@@ -28,7 +27,6 @@ server.use(cookieParser());
 server.use(express.static(path.join(__dirname, 'public')));
 
 server.use('/', index);
-server.use('/users', users);
 
 // catch 404 and forward to error handler
 server.use(function(req, res, next) {

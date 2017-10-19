@@ -14,7 +14,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('/users', { method: 'GET' })
+    fetch('/sendContractSource', { method: 'GET' })
         .then( function (res) {
             console.log(res)
         })
