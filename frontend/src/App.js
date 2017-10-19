@@ -10,13 +10,16 @@ class App extends Component {
   constructor(props) {
     super(props);
     const web3 = new Web3(window.web3.currentProvider);
-    this.state = { web3: web3, users: []}
+    this.state = { web3: web3 }
   }
 
   componentDidMount() {
-    fetch('/users')
-      .then(res => res.json())
-      .then(users => this.setState({ users }));
+    fetch('/users', { method: 'GET' })
+        .then( function (res) {
+            console.log(res)
+        })
+    //   .then(res => res.json())
+    //   .then(users => this.setState({ users }));
   }
 
   render() {
