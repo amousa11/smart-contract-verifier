@@ -10,13 +10,19 @@ class App extends Component {
   constructor(props) {
     super(props);
     const web3 = new Web3(window.web3.currentProvider);
-    this.state = { web3: web3 }
+    this.state = { web3: web3, users: []}
+  }
+
+  componentDidMount() {
+    fetch('/users')
+      .then(res => res.json())
+      .then(users => this.setState({ users }));
   }
 
   render() {
     return (
       <div className="App container-fluid">
-      
+
         <div className="row pad-1">
           <div className="col-sm-3"><h1>Smart Contract Verifier</h1></div>
           <div className="col-sm-6"></div>
